@@ -32,7 +32,16 @@ public class IndexPegawai {
 		}
 	}
 	public static void loginPegawai() {
-		System.out.print("Masukan Email    : "); String email = in2.next();
+		String email = "";
+		while(!email.contains("@") && !email.contains(".")){
+			System.out.print("Masukan Email    : "); email = in2.next();
+			if(email.contains("@") && email.contains(".")) {
+				break;
+			}
+			else {
+				System.out.println("Format Email salah");
+			}
+		}		
 		System.out.print("Masukan Password : "); String password = in2.next();
 		DatabaseUtil db = new DatabaseUtil();
 		Pegawai pegawai = new Pegawai();
