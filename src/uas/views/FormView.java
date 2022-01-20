@@ -195,7 +195,7 @@ public class FormView {
 		int id;
 		Customer customer = new Customer();
 		CustomerDAO operation = new CustomerDAOImpl();
-		System.out.print("Masukkan id dari data yang akan dicari: ");
+		System.out.print("Masukkan ID dari data yang akan dicari: ");
 		id = in.nextInt();
 		customer.setId(id);
 		operation.getCustomerById(id);	
@@ -262,7 +262,7 @@ public class FormView {
 		int id;
 		Room room = new Room();
 		RoomDAO operation = new RoomDAOImpl();
-		System.out.print("Masukkan id dari data yang akan dicari: ");
+		System.out.print("Masukkan ID dari data yang akan dicari: ");
 		id = in.nextInt();
 		room.setId(id);
 		operation.getRoomById(id);	
