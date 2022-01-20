@@ -16,19 +16,19 @@ public class FormView {
 		System.out.println("              *****************************************                  ");
         System.out.println("              | Form Insert Data Pegawai	          |                  ");
         System.out.println("              *****************************************                  ");
-        System.out.print("              | ID			:");
+        System.out.print("              | ID		:");
         pegawai.setId(in.nextInt());
-        System.out.print("              | Nama		        :");
+        System.out.print("              | Nama		:");
         pegawai.setNama(in2.nextLine());
-        System.out.print("              | Email                   :");
+        System.out.print("              | Email		:");
         pegawai.setEmail(in2.nextLine());
-        System.out.print("              | Password                :");
+        System.out.print("              | Password	:");
         pegawai.setPassword(in2.nextLine());
-        System.out.print("              | Posisi				  :");
+        System.out.print("              | Posisi	:");
         pegawai.setPosition(in2.nextLine());
-        System.out.print("              | NO HP					  :");
+        System.out.print("              | NO HP		:");
         pegawai.setNohp(in2.nextLine());
-        System.out.print("              | Alamat	        	  :");
+        System.out.print("              | Alamat	:");
         pegawai.setAlamat(in2.nextLine());
         System.out.println("              *****************************************					 ");
         operation.savePegawai(pegawai);
@@ -49,20 +49,20 @@ public class FormView {
 		System.out.println("              *****************************************                  ");
         System.out.println("              | Form Update Data Pegawai        |                  ");
         System.out.println("              *****************************************                  ");
-        System.out.print("              | ID			:");
+        System.out.print("              | ID		: ");
         System.out.println(id);
         pegawai.setId(id);
-        System.out.print("              | Nama		        :");
+        System.out.print("              | Nama		: ");
         pegawai.setNama(in2.nextLine());
-        System.out.print("              | Email                   :");
+        System.out.print("              | Email		: ");
         pegawai.setEmail(in2.nextLine());
-        System.out.print("              | Password                   :");
+        System.out.print("              | Password	: ");
         pegawai.setPassword(in2.nextLine());
-        System.out.print("              | Posisi				  :");
+        System.out.print("              | Posisi	: ");
         pegawai.setPosition(in2.nextLine());
-        System.out.print("              | NO HP					  :");
+        System.out.print("              | NO HP		: ");
         pegawai.setNohp(in2.nextLine());
-        System.out.print("              | Alamat	        	  :");
+        System.out.print("              | Alamat	: ");
         pegawai.setAlamat(in2.nextLine());
         System.out.println("              *****************************************					 ");
         operation.updatePegawai(pegawai);;
@@ -106,17 +106,17 @@ public class FormView {
 		System.out.println("              *****************************************                  ");
         System.out.println("              | Form Insert Data Customer	          |                  ");
         System.out.println("              *****************************************                  ");
-        System.out.print("              | ID			:");
+        System.out.print("              | ID		: ");
         customer.setId(in.nextInt());
-        System.out.print("              | Nama		        :");
+        System.out.print("              | Nama		: ");
         customer.setNama(in2.nextLine());
-        System.out.print("              | Email                   :");
+        System.out.print("              | Email		: ");
         customer.setEmail(in2.nextLine());
-        System.out.print("              | Password                :");
+        System.out.print("              | Password	: ");
         customer.setPassword(in2.nextLine());
-        System.out.print("              | NO HP					  :");
+        System.out.print("              | NO HP		: ");
         customer.setNohp(in2.nextLine());
-        System.out.print("              | Alamat	        	  :");
+        System.out.print("              | Alamat	: ");
         customer.setAlamat(in2.nextLine());
         System.out.println("              *****************************************					 ");
         operation.saveCustomer(customer);
@@ -138,25 +138,31 @@ public class FormView {
 		System.out.println("              *****************************************                  ");
         System.out.println("              | Form Update Data Customer		       |                  ");
         System.out.println("              *****************************************                  ");
-        System.out.print("              | ID			:");
+        System.out.print("              | ID		: ");
         System.out.println(id);
         customer.setId(id);
-        System.out.print("              | Nama		        :");
+        System.out.print("              | Nama		: ");
         customer.setNama(in2.nextLine());
-        System.out.print("              | Email                   :");
+        System.out.print("              | Email		: ");
         customer.setEmail(in2.nextLine());
-        System.out.print("              | Password                   :");
+        System.out.print("              | Password	: ");
         customer.setPassword(in2.nextLine());
-        System.out.print("              | NO HP					  :");
+        System.out.print("              | NO HP		: ");
         customer.setNohp(in2.nextLine());
-        System.out.print("              | Alamat	        	  :");
+        System.out.print("              | Alamat	: ");
         customer.setAlamat(in2.nextLine());
         System.out.println("              *****************************************					 ");
         operation.updateCustomer(customer);;
         System.out.print("[B] Tekan Tombol B untuk kembali ke menu sebelumnya: ");
 		back = in2.next().charAt(0);
 		if (back == 'B' || back == 'b') {
-			MenuCustomer.displayMenuCustomer();
+			if(IndexPegawai.inId != 0) {
+				MenuCustomer.displayMenuCustomer();
+			}
+			else {
+				IndexCustomer.Page();
+			}
+			// Menambahkan fitur check
 		}
 	}
 	public static void deleteCustomer() {
@@ -227,17 +233,18 @@ public class FormView {
 		System.out.println("              *****************************************");
         System.out.println("              | Form Update Data Room				  |");
         System.out.println("              *****************************************");
-        System.out.print("              | ID	:");
+        System.out.print("              | ID	: ");
         System.out.println(id);
         room.setId(id);
-        System.out.print("              | Nama	:");
+        System.out.print("              | Nama	: ");
         room.setNama(in2.nextLine());
-        System.out.print("              | Price	:");
+        System.out.print("              | Price	: ");
         room.setPrice(in.nextFloat());
         System.out.println("              *****************************************					 ");
         operation.updateRoom(room);;
         System.out.print("[B] Tekan Tombol B untuk kembali ke menu sebelumnya: ");
 		back = in2.next().charAt(0);
+		// memperbaiki form insert dan update
 		if (back == 'B' || back == 'b') {
 			MenuRoom.displayMenuRoom();
 		}
