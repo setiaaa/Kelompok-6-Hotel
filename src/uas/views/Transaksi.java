@@ -1,24 +1,32 @@
 package uas.views;
 import uas.bean.*;
 import uas.utils.DatabaseUtil;
+import uas.daoimpl.*;
+import uas.dao.*;
 
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.Scanner;
 public class Transaksi {
 	public static void CheckIn() {
 		Scanner in = new Scanner(System.in);
-		System.out.print("Masukan Nomor Room: ");
+		Room room = new Room();
+		RoomDAO operation = new RoomDAOImpl();
+		ViewRoom.displayTabelRoom(operation.getAllRoom());
+		System.out.println("Jika Check In lebih dari 1 kamar\n"
+				+ "Maka mendapatkan diskon 10%");
+		System.out.print("Masukan Nomor Room	: ");
 		LoginCustomer.nomor = in.nextInt();
-		System.out.print("Jumlah Room");
+		System.out.print("Jumlah Room		: ");
 		LoginCustomer.jumlah = in.nextInt();
-		in.close();
 	}
 	public static float getPrice(int id, int quantity) {
 		float price = 0;
 		Room room = new Room();
 		DatabaseUtil db = new DatabaseUtil();
+		DecimalFormat df = new DecimalFormat("Rp ###,###,###.##");
 		try {
 			db.connect();
  
@@ -34,7 +42,14 @@ public class Transaksi {
                     	room.setNama(rs.getObject(2).toString());
                         room.setPrice(Float.parseFloat(rs.getObject(3).toString()));
                         if(id == Integer.parseInt(rs.getObject(1).toString())) {
-                        	price = Integer.parseInt(rs.getObject(1).toString()) * quantity;
+                        	if(quantity > 1) {
+                        		price = Float.parseFloat(rs.getObject(3).toString()) * quantity;
+                            	System.out.println(df.format(price - (price *0.10)));
+                        	}
+                        	else {
+                        		price = Float.parseFloat(rs.getObject(3).toString()) * quantity;
+                            	System.out.println(df.format(price));
+                        	}
                         	break;
                         }
                     }

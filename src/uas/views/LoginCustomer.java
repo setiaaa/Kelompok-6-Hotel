@@ -1,11 +1,10 @@
 package uas.views;
 import java.util.Scanner;
-import java.text.DecimalFormat;
+
 public class LoginCustomer {
 	protected static int nomor, jumlah;
 	public static void profileMenu() {
 		int menu;
-		DecimalFormat df = new DecimalFormat("Rp. ###,###,###,##");
 		Scanner in = new Scanner(System.in);
 		boolean left = false;
         do {
@@ -20,7 +19,9 @@ public class LoginCustomer {
 		    		Transaksi.CheckIn();
 		        	break;
 		        case 2:
-		        	System.out.println("Total yang biaya "+df.format(Transaksi.getPrice(nomor, jumlah)));
+		        	System.out.print("Total yang biaya : ");
+		        	Transaksi.getPrice(nomor, jumlah);
+		        	;
 		        	break;
 		        case 3:
 		        	IndexCustomer.inId = 0;

@@ -27,10 +27,13 @@ public class ViewRoom {
 			System.out.println("    |\t"+kamar.getId()+"\t|     "+kamar.getNama()+"\t    |     "+df.format(kamar.getPrice())+" \t|");
 		}
 		System.out.println("     ---------------------------------------------------");
-		System.out.print("    | [B] Tekan Tombol B untuk kembali ke menu sebelumnya: ");
-		back = in.next().charAt(0);
-		if (back == 'B' || back == 'b') {
-			MenuRoom.displayMenuRoom();
+		if(IndexCustomer.inId !=0) {}
+		else {
+			System.out.print("    | [B] Tekan Tombol B untuk kembali ke menu sebelumnya: ");
+			back = in.next().charAt(0);
+			if (back == 'B' || back == 'b') {
+				MenuRoom.displayMenuRoom();
+			}
 		}
 	}
 	
