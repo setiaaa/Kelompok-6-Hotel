@@ -16,7 +16,8 @@ public class Transaksi {
 		RoomDAO operation = new RoomDAOImpl();
 		ViewRoom.displayTabelRoom(operation.getAllRoom());
 		System.out.println("Jika Check In lebih dari 1 kamar\n"
-				+ "Maka mendapatkan diskon 10%");
+				+ "Maka mendapatkan diskon 10%"
+				+ "Services Charge 5% dari Harga kamar");
 		System.out.print("Masukan Nomor Room	: ");
 		LoginCustomer.nomor = in.nextInt();
 		System.out.print("Jumlah Room		: ");
@@ -24,6 +25,7 @@ public class Transaksi {
 	}
 	public static float getPrice(int id, int quantity) {
 		float price = 0;
+		float services = 0.05f;
 		Room room = new Room();
 		DatabaseUtil db = new DatabaseUtil();
 		DecimalFormat df = new DecimalFormat("Rp ###,###,###.##");
@@ -44,11 +46,12 @@ public class Transaksi {
                         if(id == Integer.parseInt(rs.getObject(1).toString())) {
                         	if(quantity > 1) {
                         		price = Float.parseFloat(rs.getObject(3).toString()) * quantity;
-                            	System.out.println(df.format(price - (price *0.10)));
+                        		price -= (price *0.10);
+                            	System.out.println(df.format(price + (price * services)));
                         	}
                         	else {
                         		price = Float.parseFloat(rs.getObject(3).toString()) * quantity;
-                            	System.out.println(df.format(price));
+                            	System.out.println(df.format(price + (price * services)));
                         	}
                         	break;
                         }
